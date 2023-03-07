@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  body {
+    font-family: 'Montserrat Alternates', 'Roboto', 'Oxygen', 'Ubuntu';
+    font-weight: lighter;
+    font-size: 16px;
+    background: rgb(233, 233, 233);
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    min-height: 90vh;
+    margin-top: 4rem;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Montserrat Alternates', 'Roboto', 'Oxygen', 'Ubuntu';  
+  }
+
+  img {
+    height: auto;
+    max-width: 100%;
+  }

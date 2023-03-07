@@ -1,0 +1,11 @@
+
+header {
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    background-color: #4cd886;
+
+    & * {
+        color: rgb(0, 0, 0);
+    }
+}
