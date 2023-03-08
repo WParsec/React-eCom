@@ -10,7 +10,7 @@ import styles from "./Products.module.scss";
 const url = "https://api.noroff.dev/api/v1/online-shop";
 
 export function Products() {
-    const [products, isLoading, isError] = useAPI(url);
+    const [products, isLoading, isError] = useAPI(url, []);
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleSearch = (event) => {

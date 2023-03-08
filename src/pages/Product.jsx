@@ -1,13 +1,71 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useAPI from "../hooks/useAPI";
+
+// Import styles
+import "../scss/main.scss";
+import styles from "./Product.module.scss";
 
 export function Product() {
     let { id } = useParams();
-    console.log(id)
+    let url = `https://api.noroff.dev/api/v1/online-shop/${id}`;
+    const [product, isLoading, isError] = useAPI(url, {});
+    const { title, description, price, discountedPrice, imageUrl, rating, reviews } = product;
+    console.log(reviews)
+    
+    let discount;
+
+    if (discountedPrice < price) {
+        discount = price - discountedPrice;
+        const discountPercentage = Math.round(discount / price * 100);
+    }
+
 
     return (
         <main>
-            <h1>{id}</h1>
+            <section className={styles.section}>
+                <div className={`container`}>
+                    <Link to="/">Back</Link>
+                </div>
+            </section>
+            <section>
+                <div className="container">
+                    <div className={styles.flex_wrap}>
+                        <div className={styles.image_wrap}>
+                            <img src={imageUrl} alt={title} />
+                        </div>
+                        <div className={styles.info_wrap}>
+                            <h1>{title}</h1>
+                            <p>{description}</p>
+                            <div className={styles.price_wrap}>
+                                {discount ? <p>Before: {price}</p> : ""}
+                                <p className={styles.discount_price}>Now: <span>{discountedPrice}</span></p>
+                            </div>
+                            <div className={styles.rating_wrap}>
+                                {rating ? <p>Rating: {rating}</p> : ""}
+                            </div>
+                            <div className={styles.btn_wrap}>
+                                <Link to={`/cart/${id}`} className="btn-cart">Add to cart</Link>
+                            </div>
+                        </div>
+                    </div>
+                    <section>
+                    <h2>Reviews</h2>
+                        {reviews ? <div className={styles.reviews_wrap}>
+                            {reviews.map((review) => {
+                            return (
+                                <div className={styles.review_card}>
+                                    <p>{review.username}</p>
+                                    <p>{review.description}</p>
+                                    <p>Rating: {review.rating}</p>
+                                </div>
+                            );
+                            })}
+                        </div> : ""}
+                    </section>
+                </div>
+            </section>
         </main>
     )
 }

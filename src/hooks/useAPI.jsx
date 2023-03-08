@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-export function useAPI(url) {
-    const [data, setData] = useState([]);
+export function useAPI(url, initialValue) {
+    const [data, setData] = useState(initialValue);
     const [isLoading, setLoading] = useState(false);
     const [isError, setError] = useState(null);
 
