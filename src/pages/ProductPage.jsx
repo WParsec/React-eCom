@@ -5,16 +5,14 @@ import useAPI from "../hooks/useAPI";
 
 // Import styles
 import "../scss/main.scss";
-import styles from "./Product.module.scss";
+import styles from "./ProductPage.module.scss";
 
-export function Product() {
+export function ProductPage() {
     let { id } = useParams();
     let url = `https://api.noroff.dev/api/v1/online-shop/${id}`;
     const [product, isLoading, isError] = useAPI(url, {});
     const { title, description, price, discountedPrice, imageUrl, rating, reviews} = product;
 
-    
-    
     let discount;
 
     if (discountedPrice < price) {
@@ -77,4 +75,4 @@ export function Product() {
     )
 }
 
-export default Product;
+export default ProductPage;

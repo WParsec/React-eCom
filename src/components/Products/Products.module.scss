@@ -2,7 +2,7 @@
 
 .search_wrap {
     width: 50%;
-    position: inherit;
+    position: relative;
     z-index: 10;
 
     & input {
@@ -29,6 +29,33 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 2rem;
+}
+
+.autocomplete {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.891);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+}
+
+.autocomplete_item {
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    border-radius: 0.5rem;
+
+    &:hover, &:focus {
+        background-color: #4cd88692;
+    }
+}
+
+.no_results {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 // ----------- MEDIA QUERIES ------------

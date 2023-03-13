@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useAPI from "../../hooks/useAPI";
 import ProductCard from "../ProductCard/ProductCard";
 
 // Import styles
 import "../../scss/main.scss"
 import styles from "./Products.module.scss";
+import { Link } from "react-router-dom";
 
 // Url
 const url = "https://api.noroff.dev/api/v1/online-shop";
@@ -12,14 +13,32 @@ const url = "https://api.noroff.dev/api/v1/online-shop";
 export function Products() {
     const [products, isLoading, isError] = useAPI(url, []);
     const [searchQuery, setSearchQuery] = useState("");
+    const [autocompleteSuggestion, setAutocompleteSuggestion] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState(products);
 
-    const handleSearch = (event) => {
-        setSearchQuery(event.target.value);
+    useEffect(() => {
+        setFilteredProducts(products);
+      }, [products]);
+
+      const handleSearch = (event) => {
+        const value = event.target.value;
+        setSearchQuery(value);
+    
+        const suggestions = products.filter((product) => {
+          return product.title.toLowerCase().includes(value.toLowerCase());
+        });
+        setAutocompleteSuggestion(suggestions);
+    
+        const filtered = products.filter((product) => {
+          return product.title.toLowerCase().includes(value.toLowerCase());
+        });
+        setFilteredProducts(filtered);
+      };
+
+    const handleSuggestionClick = (event) => {
+        const value = event.target.innerText;
+        setSearchQuery(value);
     };
-
-    const filteredProducts = products.filter((product) => {
-        return product.title.toLowerCase().includes(searchQuery.toLowerCase());
-    });
 
     for (let i = 0; i < products.length; i++) {
         if (products[i].rating === null || products[i].rating === 0) {
@@ -33,7 +52,6 @@ export function Products() {
         }
     }
 
-    console.log(products);
 
     return (
         <section className={styles.product_section}>
@@ -47,16 +65,29 @@ export function Products() {
                         value={searchQuery}
                         onChange={handleSearch} />
                     </form>
+                    <div className={styles.autocomplete}>
+                        {searchQuery ? autocompleteSuggestion.map((suggestion) => {
+                            return (
+                                <Link to={`/product/${suggestion.id}`} onClick={handleSuggestionClick} className={styles.autocomplete_item} key={suggestion.id}>
+                                    <p>{suggestion.title}</p>
+                                </Link>
+                            );
+                        }) : ""
+                        }
+                    </div>
                 </div>
                 <div className={styles.product_grid}>
                     {isLoading && <p>Loading...</p>}
                     {isError && <p>Something went wrong...</p>}
 
-                    {filteredProducts.map((product) => {
+                    {filteredProducts.length > 0 ? filteredProducts.map((product) => {
                         return (
                             <ProductCard key={product.id} product={product} />
-                        );
-                    })}
+                        ); 
+                    }) : <div className={styles.no_results}>
+                            <p>What does your tinder and the search results have in common?</p>
+                            <p>No matches!</p>
+                        </div>}
                 </div>
             </div>
         </section>

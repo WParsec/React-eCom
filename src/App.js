@@ -7,7 +7,7 @@ import Layout from './layout';
 // Pages
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import Product from './pages/Product';
+import ProductPage from './pages/ProductPage';
 import RouteNotFound from './pages/RouteNotFound';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="product/:id" element={<Product />} />
+            <Route path="product/:id" element={<ProductPage />} />
             <Route path="*" element={<RouteNotFound />} />
       </Route>
     </Routes>
