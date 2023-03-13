@@ -10,7 +10,7 @@ function ProductCard({ product }) {
 
     return (
         <Link to={`/product/${id}`} className={styles.product_card}>
-                {discount && <div className={styles.discount}>{product.discount}%</div>}
+                {discount && <div className="discount">{product.discount}%</div>}
                 <img src={imageUrl} alt={title} />
                 <div className={styles.info_wrap}>
                     <h3>{title}</h3>

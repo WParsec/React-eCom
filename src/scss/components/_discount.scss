@@ -1,0 +1,15 @@
+.discount {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    background-color: #F46767;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-20deg);
+    color: white;
+    font-weight: 600;
+}

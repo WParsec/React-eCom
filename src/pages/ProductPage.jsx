@@ -13,11 +13,15 @@ export function ProductPage() {
     const [product, isLoading, isError] = useAPI(url, {});
     const { title, description, price, discountedPrice, imageUrl, rating, reviews} = product;
 
+    if (isLoading) return <p>Loading...</p>;
+    if (isError) return <p>Error...</p>;
+
     let discount;
+    let discountPercentage
 
     if (discountedPrice < price) {
         discount = price - discountedPrice;
-        const discountPercentage = Math.round(discount / price * 100);
+        discountPercentage = Math.round(discount / price * 100);
     }
 
 
@@ -32,14 +36,15 @@ export function ProductPage() {
                 <div className="container">
                     <div className={styles.flex_wrap}>
                         <div className={styles.image_wrap}>
+                            {discount ? <p className="discount">{discountPercentage}%</p> : ""}
                             <img src={imageUrl} alt={title} />
                         </div>
                         <div className={styles.info_wrap}>
                             <h1>{title}</h1>
                             <p>{description}</p>
                             <div className={styles.price_wrap}>
-                                {discount ? <p>Before: {price}</p> : ""}
-                                <p className={styles.discount_price}>Now: <span>{discountedPrice}</span></p>
+                                {discount ? <p>Before: {price},-</p> : ""}
+                                <p className={styles.discount_price}>Now: <span>{discountedPrice},-</span></p>
                             </div>
                             <div className={styles.rating_wrap}>
                                 {rating ? <p>Rating: {rating}</p> : ""}
