@@ -1,7 +1,7 @@
 <!-- Create a new CRA app. -->
 <!-- Create a Header that has a Nav. -->
 
-Create a Cart Icon component and position this next to your Nav. This Cart Icon component will have an overlay that displays the number of items in the cart.
+<!-- Create a Cart Icon component and position this next to your Nav. This Cart Icon component will have an overlay that displays the number of items in the cart. -->
 
 <!-- Create a Footer component -->
 <!-- Create a Layout component that has your Header and Footer. -->
@@ -22,8 +22,9 @@ Create the other pages:
 <!-- The homepage should have a lookahead/auto-complete Search bar component. Typing values in the search bar should display products where the title matches the search input. Clicking on an item should take the user to the Product Page page. Tip: Filter the user input and then display products that match the input. -->
 <!-- On the Product Page, use the ID of the product as the params for the dynamic segment. Add the product details as mentioned in the brief. -->
 
-Create a cart state. When the Add to cart button on the Product Page is clicked, add the product to the cart.
-Clicking on the Cart Icon component will take the user to the Checkout Page page.
+<!-- Create a cart state. When the Add to cart button on the Product Page is clicked, add the product to the cart. -->
+<!-- Clicking on the Cart Icon component will take the user to the Checkout Page page. -->
+
 The CheckoutPage must list all of the products in the cart, show a total at the bottom and a Checkout button.
 Clicking the Checkout button will take the user to the CheckoutSuccessPage.
 The CheckoutSuccessPage should display that the order was successful and clear the cart. There should be a link to go back to the store.

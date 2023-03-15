@@ -23,7 +23,6 @@ export function Navbar() {
         }, 0);
         setCart({ count });
       }, [cartItems]);
-      
 
 
     return (

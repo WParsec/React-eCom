@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAPI from "../hooks/useAPI";
@@ -12,13 +12,14 @@ import styles from "./ProductPage.module.scss";
 
 
 export function ProductPage() {
-    
+
     const dispatch = useDispatch();
 
     let { id } = useParams();
     let url = `https://api.noroff.dev/api/v1/online-shop/${id}`;
     const [product, isLoading, isError] = useAPI(url, {});
     const { title, description, price, discountedPrice, imageUrl, rating, reviews} = product;
+    const [buttonText, setButtonText] = useState("Add to cart");
 
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p>Error...</p>;
@@ -29,6 +30,11 @@ export function ProductPage() {
     if (discountedPrice < price) {
         discount = price - discountedPrice;
         discountPercentage = Math.round(discount / price * 100);
+    }
+
+    function handleAddToCart(product) {
+        setButtonText("Added to cart!");
+        dispatch(addToCart(product));
     }
 
     return (
@@ -56,7 +62,7 @@ export function ProductPage() {
                                 {rating ? <p>Rating: {rating}</p> : ""}
                             </div>
                             <div className={styles.btn_wrap}>
-                                <button onClick={() => dispatch(addToCart(product))} className="btn-cart">Add to cart</button>
+                                <button onClick={() => handleAddToCart(product)} className="btn-cart">{buttonText}</button>
                             </div>
                         </div>
                     </div>
