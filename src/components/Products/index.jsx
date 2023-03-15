@@ -16,10 +16,12 @@ export function Products() {
     const [autocompleteSuggestion, setAutocompleteSuggestion] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState(products);
 
+    // Set filtered products to all products on when products is loaded
     useEffect(() => {
         setFilteredProducts(products);
       }, [products]);
-
+    
+        // Create suggestion array and filter products array from search query
       const handleSearch = (event) => {
         const value = event.target.value;
         setSearchQuery(value);
@@ -35,6 +37,7 @@ export function Products() {
         setFilteredProducts(filtered);
       };
 
+    // Set search query to suggestion when suggestion is clicked
     const handleSuggestionClick = (event) => {
         const value = event.target.innerText;
         setSearchQuery(value);
@@ -59,6 +62,7 @@ export function Products() {
                 <div className={styles.search_wrap}>
                     <form action="">
                         <input 
+                        onSubmit={(event) => event.preventDefault()}
                         className="search" 
                         type="text" 
                         placeholder="Search products" 
@@ -68,7 +72,7 @@ export function Products() {
                     <div className={styles.autocomplete}>
                         {searchQuery ? autocompleteSuggestion.map((suggestion) => {
                             return (
-                                <Link to={`/product/${suggestion.id}`} onClick={handleSuggestionClick} className={styles.autocomplete_item} key={suggestion.id}>
+                                <Link to={`/product/${suggestion.id}`} onFocus={handleSuggestionClick} className={styles.autocomplete_item} key={suggestion.id}>
                                     <p>{suggestion.title}</p>
                                 </Link>
                             );

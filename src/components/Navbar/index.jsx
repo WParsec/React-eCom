@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import {AiOutlineShoppingCart} from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-
+// Redux
+import { useSelector } from 'react-redux';
 
 // Import CSS
 import styles from './Navbar.module.scss';
 
 export function Navbar() {
     const [click, setClick] = useState(false);
-    const handleClick = () => setClick(!click);
+    const handleClick = () => setClick(!click);    
 
+    // Redux
+    const cartItems = useSelector((state) => state.cart);
+    console.log(cartItems);
     const [cart, setCart] = useState({count: 0});
-    const handleCart = () => {
-        setCart({count: cart.count + 1});
-        console.log(cart)
-    }
+
+    useEffect(() => {
+        const count = cartItems.products.reduce((total, product) => {
+          return total + product.quantity;
+        }, 0);
+        setCart({ count });
+      }, [cartItems]);
+      
+
 
     return (
         <div className="container">
@@ -30,7 +39,10 @@ export function Navbar() {
                     </li>
                 </ul>
                 <div className='flex-row'>
-                    <Link to="Cart" className={styles.cart}><AiOutlineShoppingCart onClick={handleCart} size={24}>{cart ? <span>{cart.count}</span> : ""}</AiOutlineShoppingCart></Link>
+                    <div className={styles.cart_wrap}>
+                        <Link to="Cart" className={styles.cart}><AiOutlineShoppingCart size={24}></AiOutlineShoppingCart></Link>
+                        {cart && cart.count > 0 && <span className={styles.cart_amount}>{cart.count}</span>}
+                    </div>
                     <div className={styles.hamburger} onClick={handleClick}>
                             {click ? <FaTimes size={24} style={{color: "#fff"}}/> : <FaBars size={24} style={{color: "#fff"}}/>}
                     </div>

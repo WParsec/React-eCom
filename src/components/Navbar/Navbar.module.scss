@@ -37,6 +37,25 @@
     display: flex;
 }
 
+.cart_wrap {
+    position: relative;
+}
+
+.cart_amount {
+    position: absolute;
+    z-index: 100;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: #F46767;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 5px;
+    right: 30px;
+}
+
 .logo {
     width: 100%;
     font-family: 'Sacramento', cursive;

@@ -2,12 +2,19 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAPI from "../hooks/useAPI";
+// Redux
+import { addToCart } from "../cartSlice";
+import { useDispatch } from "react-redux";
 
 // Import styles
 import "../scss/main.scss";
 import styles from "./ProductPage.module.scss";
 
+
 export function ProductPage() {
+    
+    const dispatch = useDispatch();
+
     let { id } = useParams();
     let url = `https://api.noroff.dev/api/v1/online-shop/${id}`;
     const [product, isLoading, isError] = useAPI(url, {});
@@ -23,7 +30,6 @@ export function ProductPage() {
         discount = price - discountedPrice;
         discountPercentage = Math.round(discount / price * 100);
     }
-
 
     return (
         <main>
@@ -50,7 +56,7 @@ export function ProductPage() {
                                 {rating ? <p>Rating: {rating}</p> : ""}
                             </div>
                             <div className={styles.btn_wrap}>
-                                <Link to={`/cart/${id}`} className="btn-cart">Add to cart</Link>
+                                <button onClick={() => dispatch(addToCart(product))} className="btn-cart">Add to cart</button>
                             </div>
                         </div>
                     </div>
