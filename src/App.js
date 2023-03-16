@@ -6,7 +6,7 @@ import Layout from './layout';
 
 // Pages
 import Home from './pages/Home';
-import Cart from './pages/Cart';
+import CheckoutPage from './pages/CheckoutPage';
 import ProductPage from './pages/ProductPage';
 import RouteNotFound from './pages/RouteNotFound';
 
@@ -15,7 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="cart" element={<Cart />} />
+            <Route path="checkoutPage" element={<CheckoutPage />} />
             <Route path="product/:id" element={<ProductPage />} />
             <Route path="*" element={<RouteNotFound />} />
       </Route>

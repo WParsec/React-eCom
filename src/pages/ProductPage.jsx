@@ -2,9 +2,13 @@ import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useAPI from "../hooks/useAPI";
+
 // Redux
 import { addToCart } from "../cartSlice";
 import { useDispatch } from "react-redux";
+
+// Components
+import BackButton from "../components/BackButton";
 
 // Import styles
 import "../scss/main.scss";
@@ -39,9 +43,9 @@ export function ProductPage() {
 
     return (
         <main>
-            <section className={styles.section}>
+            <section className="border-bottom">
                 <div className={`container`}>
-                    <Link to="/">Back</Link>
+                    <BackButton/>
                 </div>
             </section>
             <section>

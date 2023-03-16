@@ -11,7 +11,7 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
-            const {id, title, discountedPrice} = action.payload;
+            const {id, title, discountedPrice, imageUrl, description, rating } = action.payload;
             console.log(action.payload);
             const existingProduct = state.products.find((product) => product.id === id);
             // Creates new object with the same properties as the old state object and adds the new property cartTotal
@@ -29,6 +29,9 @@ export const cartSlice = createSlice({
                     title,
                     discountedPrice,
                     quantity: 1,
+                    imageUrl,
+                    description,
+                    rating,
                 });
             }
         },
