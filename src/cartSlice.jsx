@@ -13,12 +13,10 @@ export const cartSlice = createSlice({
         addToCart: (state, action) => {
             const {id, title, discountedPrice, imageUrl, description, rating } = action.payload;
             console.log(action.payload);
+            console.log(action.payload.discountedPrice);
             const existingProduct = state.products.find((product) => product.id === id);
             // Creates new object with the same properties as the old state object and adds the new property cartTotal
-            state = {
-                ...state,
-                cartTotal: state.cartTotal + discountedPrice,
-            };
+            state.cartTotal += discountedPrice;
             if (existingProduct) {
                 existingProduct.quantity++;
                 return;
@@ -34,16 +32,14 @@ export const cartSlice = createSlice({
                     rating,
                 });
             }
+        console.log(`cartTotal: ${state.cartTotal}`)
         },
         removeFromCart: (state, action) => {
             const {id, discountedPrice} = action.payload;
             const existingProduct = state.products.find((product) => product.id === id);
             if (existingProduct) {
                 existingProduct.quantity--;
-                state = {
-                    ...state,
-                    cartTotal: state.cartTotal - discountedPrice,
-                }
+                state.cartTotal -= discountedPrice;
                 if (existingProduct.quantity === 0) {
                     state.products = state.products.filter((product) => product.id !== id);
                 } else {
