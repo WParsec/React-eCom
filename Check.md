@@ -12,9 +12,9 @@ Create the other pages:
 
 <!-- 6.2 ProductPage -->
 
-6.3 CheckoutPage
+<!-- 6.3 CheckoutPage -->
 
-6.4 CheckoutSuccessPage
+<!-- 6.4 CheckoutSuccessPage -->
 
 <!-- Add React Router and route to each of the pages. The ProductPage page will be using a dynamic segment. -->
 <!-- Fetch the list of products on the Homepage and store this as a state. -->
@@ -25,9 +25,11 @@ Create the other pages:
 <!-- Create a cart state. When the Add to cart button on the Product Page is clicked, add the product to the cart. -->
 <!-- Clicking on the Cart Icon component will take the user to the Checkout Page page. -->
 
-The CheckoutPage must list all of the products in the cart, show a total at the bottom and a Checkout button.
-Clicking the Checkout button will take the user to the CheckoutSuccessPage.
-The CheckoutSuccessPage should display that the order was successful and clear the cart. There should be a link to go back to the store.
+<!-- The CheckoutPage must list all of the products in the cart, show a total at the bottom and a Checkout button. -->
+
+<!-- Clicking the Checkout button will take the user to the CheckoutSuccessPage. -->
+
+<!-- The CheckoutSuccessPage should display that the order was successful and clear the cart. There should be a link to go back to the store. -->
 
 On the ContactPage, create the following inputs with the following requirements.
 

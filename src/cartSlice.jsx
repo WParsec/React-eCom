@@ -12,8 +12,6 @@ export const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             const {id, title, discountedPrice, imageUrl, description, rating } = action.payload;
-            console.log(action.payload);
-            console.log(action.payload.discountedPrice);
             const existingProduct = state.products.find((product) => product.id === id);
             // Creates new object with the same properties as the old state object and adds the new property cartTotal
             state.cartTotal += discountedPrice;
@@ -46,10 +44,14 @@ export const cartSlice = createSlice({
                     return;
                 }
             }
+        },
+        clearCart: (state) => {
+            state.products = [];
+            state.cartTotal = 0;
         }
     },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

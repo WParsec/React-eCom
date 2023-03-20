@@ -108,6 +108,11 @@
         font-size: 1.2rem;
         font-weight: 600;
     }
+
+    & a {
+        display: block;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 900px) {

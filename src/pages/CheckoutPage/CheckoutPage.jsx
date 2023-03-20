@@ -1,13 +1,16 @@
 import React from "react";
 
 // Components
-import BackButton from "../components/BackButton";
+import BackButton from "../../components/BackButton";
 
 // Redux
 import { useSelector } from "react-redux";
 
+// Pages
+import { Link } from "react-router-dom";
+
 // Import styles
-import '../scss/main.scss'
+import '../../scss/main.scss'
 import styles from './CheckoutPage.module.scss'
 
 
@@ -71,7 +74,7 @@ export function CheckoutPage() {
                       </div>
                       <p>Total: ${cart.cartTotal.toFixed(2)}</p>
                     </div>
-                    <button className="btn-cart">Checkout</button>
+                    <Link to="/CheckoutSuccessPage" className="btn-cart">Checkout</Link>
                   </div>
                 </div>
             ) : (
