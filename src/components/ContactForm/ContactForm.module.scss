@@ -1,0 +1,42 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+    gap: 1rem;
+    margin: 4rem 0;
+    position: relative;
+
+    & input, textarea {
+        height: 40px;
+        border: none;
+        border-radius: 0.5rem;
+        outline: none;
+        padding: 0.8rem;
+        transition: all 800ms;
+
+        &:focus {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+        }
+
+        &.valid {
+            border: 1px solid #7ceeac;
+        }
+
+        &.invalid {
+            border: 1px solid red;
+        }
+    }
+
+    & textarea {
+        height: 200px;
+        max-height: 200px;
+        max-width: 100%;
+    }
+
+    & p {
+        color: red;
+        font-size: 0.8rem;
+    }
+}

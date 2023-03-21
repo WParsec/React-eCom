@@ -1,9 +1,27 @@
 import React from 'react'
 
+// Import components
+import ContactForm from '../../components/ContactForm'
+import BackButton from '../../components/BackButton'
+
+// Import styles
+import '../../scss/main.scss'
+import styles from './Contact.module.scss'
+
 function Contact() {
   return (
     <main>
-        <h1>Contact</h1>
+      <section className="border-bottom">
+            <div className={`container`}>
+                <BackButton/>
+            </div>
+      </section>
+      <section>
+        <div className="container">
+          <h1 className={styles.heading}>Contact</h1>
+          <ContactForm/>
+        </div>
+      </section>
     </main>
   )
 }
