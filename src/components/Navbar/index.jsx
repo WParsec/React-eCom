@@ -39,7 +39,7 @@ export function Navbar() {
                 </ul>
                 <div className='flex-row'>
                     <div className={styles.cart_wrap}>
-                        <Link to="CheckoutPage" className={styles.cart}><AiOutlineShoppingCart size={24}></AiOutlineShoppingCart></Link>
+                        <Link to="CheckoutPage" className={styles.cart}><AiOutlineShoppingCart color="black" size={24}></AiOutlineShoppingCart></Link>
                         {cart && cart.count > 0 && <span className={styles.cart_amount}>{cart.count}</span>}
                     </div>
                     <div className={styles.hamburger} onClick={handleClick}>
