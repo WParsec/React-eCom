@@ -43,7 +43,7 @@ export function Navbar() {
                         {cart && cart.count > 0 && <span className={styles.cart_amount}>{cart.count}</span>}
                     </div>
                     <div className={styles.hamburger} onClick={handleClick}>
-                            {click ? <FaTimes size={24} style={{color: "#fff"}}/> : <FaBars size={24} style={{color: "#fff"}}/>}
+                            {click ? <FaTimes size={24} style={{color: "black"}}/> : <FaBars size={24} style={{color: "black"}}/>}
                     </div>
                 </div>
             </div>
