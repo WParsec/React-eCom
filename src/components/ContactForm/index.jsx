@@ -38,7 +38,7 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.contact_form} onSubmit={handleSubmit(onSubmit)}>
       <input
         {...register('fullName')}
         className= {
