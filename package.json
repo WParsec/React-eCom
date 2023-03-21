@@ -28,7 +28,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://<wparsec>.github.io/<React-eCom>/",
+  "homepage": "https://wparsec.github.io/React-eCom/",
   "eslintConfig": {
     "extends": [
       "react-app",
