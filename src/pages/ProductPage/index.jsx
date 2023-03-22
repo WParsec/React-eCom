@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import { useParams } from "react-router-dom";
-import useAPI from "../hooks/useAPI";
+import useAPI from "../../hooks/useAPI";
 
 // Redux
-import { addToCart } from "../cartSlice";
+import { addToCart } from "../../cartSlice";
 import { useDispatch } from "react-redux";
 
 // Components
-import BackButton from "../components/BackButton";
+import BackButton from "../../components/BackButton";
 
 // Import styles
-import "../scss/main.scss";
+import "../../scss/main.scss";
 import styles from "./ProductPage.module.scss";
 
 

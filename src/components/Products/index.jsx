@@ -22,7 +22,7 @@ export function Products() {
       }, [products]);
     
         // Create suggestion array and filter products array from search query
-      const handleSearch = (event) => {
+        const handleSearch = (event) => {
         const value = event.target.value;
         setSearchQuery(value);
     
@@ -58,44 +58,53 @@ export function Products() {
 
     return (
         <section className={styles.product_section}>
-            <div className="container">
-                <div className={styles.search_wrap}>
-                    <form action="">
-                        <input 
-                        onSubmit={(event) => event.preventDefault()}
-                        className="search" 
-                        type="text" 
-                        placeholder="Search products" 
-                        value={searchQuery}
-                        onChange={handleSearch} />
-                    </form>
-                    <div className={styles.autocomplete}>
-                        {searchQuery ? autocompleteSuggestion.map((suggestion) => {
-                            return (
-                                <Link to={`/product/${suggestion.id}`} onFocus={handleSuggestionClick} className={styles.autocomplete_item} key={suggestion.id}>
-                                    <p>{suggestion.title}</p>
-                                </Link>
-                            );
-                        }) : ""
-                        }
-                    </div>
-                </div>
-                <div className={styles.product_grid}>
-                    {isLoading && <p>Loading...</p>}
-                    {isError && <p>Something went wrong...</p>}
-
-                    {filteredProducts.length > 0 ? filteredProducts.map((product) => {
-                        return (
-                            <ProductCard key={product.id} product={product} />
-                        ); 
-                    }) : <div className={styles.no_results}>
-                            <p>What does your tinder and the search results have in common?</p>
-                            <p>No matches!</p>
-                        </div>}
-                </div>
+          <div className="container">
+            <div className={styles.search_wrap}>
+              <form action="">
+                <input
+                  onSubmit={(event) => event.preventDefault()}
+                  className="search"
+                  type="text"
+                  placeholder="Search products"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                />
+              </form>
+              <div className={styles.autocomplete}>
+                {searchQuery && autocompleteSuggestion.length > 0
+                  ? autocompleteSuggestion.map((suggestion) => {
+                      return (
+                        <Link
+                          to={`/product/${suggestion.id}`}
+                          onFocus={handleSuggestionClick}
+                          className={styles.autocomplete_item}
+                          key={suggestion.id}
+                        >
+                          <p>{suggestion.title}</p>
+                        </Link>
+                      );
+                    })
+                  : null}
+              </div>
             </div>
+            <div className={styles.product_grid}>
+              {isLoading && <p>Loading...</p>}
+              {isError && <p>Something went wrong...</p>}
+      
+              {filteredProducts.length > 0
+                ? filteredProducts.map((product) => {
+                    return <ProductCard key={product.id} product={product} />;
+                  })
+                : null}
+              {!isLoading && !isError && searchQuery && filteredProducts.length === 0 ? (
+                <div className={styles.no_results}>
+                  <p>What does your Tinder and the search results have in common?</p>
+                  <p>No matches!</p>
+                </div>
+              ) : null}
+            </div>
+          </div>
         </section>
-    );
-}
-
-export default Products;
+      );
+    }  
+    export default Products;
