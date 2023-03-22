@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import {AiOutlineShoppingCart} from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // Redux
 import { useSelector } from 'react-redux';
 
@@ -11,6 +11,12 @@ import styles from './Navbar.module.scss';
 export function Navbar() {
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);    
+
+    // Close nav when location changes
+    const location = useLocation();
+    useEffect(() => {
+        setClick(false);
+    }, [location]);
 
     // Redux
     const cartItems = useSelector((state) => state.cart);
