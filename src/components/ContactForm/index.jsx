@@ -9,10 +9,10 @@ import styles from './ContactForm.module.scss'
 
 const schema = yup
 .object({
-  fullName: yup.string().required().min(3),
-  subject: yup.string().required().min(3),
-  email: yup.string().required().email(),
-  body: yup.string().required().min(3),
+  fullName: yup.string().trim().required().min(3),
+  subject: yup.string().trim().required().min(3),
+  email: yup.string().trim().required().email(),
+  body: yup.string().trim().required().min(3),
 }).required();
 
 function ContactForm() {
