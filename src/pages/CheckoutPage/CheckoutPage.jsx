@@ -5,6 +5,8 @@ import BackButton from "../../components/BackButton";
 
 // Redux
 import { useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../../cartSlice";
+import { useDispatch } from "react-redux";
 
 // Pages
 import { Link } from "react-router-dom";
@@ -15,10 +17,9 @@ import styles from './CheckoutPage.module.scss'
 
 
 export function CheckoutPage() {
+    const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
-    console.log(cart);
     const products = cart.products;
-    console.log(products)
   
     return (
       <main>
@@ -31,8 +32,10 @@ export function CheckoutPage() {
           <div className="container">
             <h1 className={styles.heading}>Checkout</h1>
             <div className={styles.cart_wrap}>
-              {products && products.length > 0 ? (
-                products.map(({ id, imageUrl, title, discountedPrice, quantity, rating }) => {
+            {products && products.length > 0 ? (
+                products.map((product) => {
+                const { id, imageUrl, title, discountedPrice, quantity, rating } = product;
+
   
                   return (
                     <div className={styles.cart_item} key={id}>
@@ -49,8 +52,8 @@ export function CheckoutPage() {
                               <div className={styles.quantity_wrap}>
                                   <p>Quantity: {quantity}</p>
                                   <div className={styles.quantity_adjuster}>
-                                      <button className="btn">+</button>
-                                      <button className="btn">-</button>
+                                      <button onClick={() => dispatch(addToCart(product))} className="btn">+</button>
+                                      <button onClick={() => dispatch(removeFromCart(product))} className="btn">-</button>
                                   </div>
                               </div>
                           </div>

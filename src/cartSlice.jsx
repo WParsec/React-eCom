@@ -30,7 +30,6 @@ export const cartSlice = createSlice({
                     rating,
                 });
             }
-        console.log(`cartTotal: ${state.cartTotal}`)
         },
         removeFromCart: (state, action) => {
             const {id, discountedPrice} = action.payload;

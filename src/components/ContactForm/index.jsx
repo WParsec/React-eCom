@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, useFormState } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -16,6 +16,8 @@ const schema = yup
 }).required();
 
 function ContactForm() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const { 
     register, 
     handleSubmit,
@@ -28,8 +30,11 @@ function ContactForm() {
 
   const { touchedFields } = useFormState({ control });  
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, event) => {
+    // Clear the form after submit
     console.log(data);
+    setIsSubmitted(true);
+    event.target.reset();
   };
 
   // Validate input on blur
@@ -73,6 +78,7 @@ function ContactForm() {
       />
       <p>{errors.body?.message}</p>
       <button type="submit" className='btn-cart'>Submit</button>
+      {isSubmitted && <p>Your message has been submitted!</p>}
     </form>
   );
 }

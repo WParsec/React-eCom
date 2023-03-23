@@ -20,7 +20,6 @@ export function Navbar() {
 
     // Redux
     const cartItems = useSelector((state) => state.cart);
-    console.log(cartItems);
     const [cart, setCart] = useState({count: 0});
 
     useEffect(() => {
