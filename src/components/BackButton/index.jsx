@@ -1,9 +1,6 @@
 import React from 'react';
 import useGoBack from '../../hooks/useGoBack';
 
-// Import styles
-import '../../scss/main.scss';
-
 const BackButton = () => {
   const goBack = useGoBack();
 

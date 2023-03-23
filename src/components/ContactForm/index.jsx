@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 // Import styles
-import '../../scss/main.scss'
 import styles from './ContactForm.module.scss'
 
 const schema = yup

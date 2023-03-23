@@ -6,6 +6,9 @@ import styled from "styled-components";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
+// Import styles
+import '../scss/main.scss'
+
 const Div = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;

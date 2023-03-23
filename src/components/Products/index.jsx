@@ -3,7 +3,6 @@ import useAPI from "../../hooks/useAPI";
 import ProductCard from "../ProductCard/ProductCard";
 
 // Import styles
-import "../../scss/main.scss"
 import styles from "./Products.module.scss";
 import { Link } from "react-router-dom";
 

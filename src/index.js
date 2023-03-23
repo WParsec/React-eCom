@@ -15,4 +15,4 @@ root.render(
   </Provider>
 );
 
-// Redux persist for local storage
+// Hydrogen is a library for storing and retrieving data from the browser's local storage.

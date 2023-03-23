@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 // Import styles
 import styles from "./ProductCard.module.scss";
-import "../../scss/main.scss";
 
 function ProductCard({ product }) {
     const { id, title, discountedPrice, imageUrl, rating, discount } = product;

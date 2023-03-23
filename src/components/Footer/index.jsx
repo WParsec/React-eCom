@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Import styles
 import styles from "./Footer.module.scss";
-import "../../scss/main.scss"
 
 export function Footer() {
     return (

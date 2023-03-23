@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import BackButton from '../../components/BackButton'
 
 // Import styles
-import '../../scss/main.scss'
 import styles from './CheckoutSuccessPage.module.scss'
 
 function CheckoutSuccessPage() {

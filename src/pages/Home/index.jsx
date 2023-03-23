@@ -4,9 +4,6 @@ import React from "react";
 import Hero from "../../components/Hero";
 import Products from "../../components/Products";
 
-// Global styles
-import '../../scss/main.scss'
-
 export function Home() {
     return (
        <main>

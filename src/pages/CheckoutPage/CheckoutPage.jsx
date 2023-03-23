@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 // Import styles
-import '../../scss/main.scss'
 import styles from './CheckoutPage.module.scss'
 
 
