@@ -3,6 +3,7 @@
 ## Introduction
 
 This is my first React project, created the 2. year at Noroff Frontend Development. The assignment was to create an ecommerce website using React. 
+It is created using create-react-app.
 
 ## Initializing and running the project
 
