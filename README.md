@@ -1,3 +1,5 @@
+![React ecom site image](https://raw.githubusercontent.com/Wparsec/React-eCom/main/reactEcom.png)
+
 # Javascript Frameworks Assignment - React Ecommerce website
 
 ## Introduction
